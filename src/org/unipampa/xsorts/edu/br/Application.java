@@ -31,8 +31,9 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        long a = 0;
+        long time = 0;
         FileAnalyzer analyzer;
+        Integer [] vetor = {8,2,5,1,3,5,9};
         try {
             if (args.length > 3 || args.length < 1) {
                 throw new Exception("Invalid number of parameters");
@@ -41,12 +42,13 @@ public class Application {
             analyzer = new FileAnalyzer(args[0]);
 
             if (verifyArgTime(args)) {
-                a = System.nanoTime();
+                time = System.nanoTime();
             }
             switch (args[1]) {
                 case "-a":
                     System.out.println(Arrays.toString(new HeapSort().ordinate(analyzer.readArchive())));
                     System.out.println(Arrays.toString(new QuickSort().ordinate(analyzer.readArchive())));
+                    System.out.println(Arrays.toString(new MergeSort().ordinate(analyzer.readArchive())));
                     break;
                 case "-h":
                     System.out.println(Arrays.toString(new HeapSort().ordinate(analyzer.readArchive())));
@@ -54,11 +56,14 @@ public class Application {
                 case "-q":
                     System.out.println(Arrays.toString(new QuickSort().ordinate(analyzer.readArchive())));
                     break;
+                case "-m":
+                    System.out.println(Arrays.toString(new MergeSort().ordinate(analyzer.readArchive())));
+                    break;
                 default:
                     throw new Exception("Argument invalid");
             }
             if (verifyArgTime(args)) {
-                System.out.println("Time in Seconds: " + ((System.nanoTime() - a) / 1000000000));
+                System.out.println("Time in Seconds: " + ((System.nanoTime() - time) / 1000000000));
             }
         } catch (Exception e) {
             System.out.println("Oops! An error has occurred:\n* " + e.getMessage());
