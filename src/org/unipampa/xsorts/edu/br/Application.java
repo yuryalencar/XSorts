@@ -33,7 +33,6 @@ public class Application {
     public static void main(String[] args) {
         long time = 0;
         FileAnalyzer analyzer;
-        Integer [] vetor = {8,2,5,1,3,5,9};
         try {
             if (args.length > 3 || args.length < 1) {
                 throw new Exception("Invalid number of parameters");
